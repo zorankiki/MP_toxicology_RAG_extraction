@@ -12,7 +12,11 @@
 
 <p align="center">
   <a href="https://mybinder.org/v2/gh/zorankiki/MP_toxicology_RAG_extraction/dev?filepath=demo_rag_extraction_MPs.ipynb">
-    <img src="https://mybinder.org/badge_logo.svg" alt="Run on Binder" height="50"/>
+    <img src="https://mybinder.org/badge_logo.svg" alt="Run on Binder" height="45"/>
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://colab.research.google.com/github/zorankiki/MP_toxicology_RAG_extraction/blob/dev/demo_rag_extraction_MPs.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" height="45"/>
   </a>
 </p>
 
