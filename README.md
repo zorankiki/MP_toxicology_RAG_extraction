@@ -1,143 +1,78 @@
 # MP_toxicology_RAG_extraction
 
-**MP_toxicology_RAG_extraction** is a demo project for **RAG-based (Retrieval-Augmented Generation) information extraction** from **scientific studies on microplastics**, with a focus on toxicology-related content.
+**Two-column README: Windows vs Ubuntu/Linux**
+
+> Note: GitHub Flavored Markdown supports inline HTML. Below are two options for a two-column layout.
+> - **HTML table approach:** simple and broadly supported
+> - **Side-by-side divs (requires GitHub to allow inline styles):** may not render identically across viewers
 
 ---
 
-## 📌 Project Overview
+## Option 1 — HTML Table (recommended)
 
-- **Domain:** Scientific literature / Toxicology / Microplastics  
-- **Goal:** Demonstrate information extraction using **RAG pipelines**  
-- **Status:** Demo / Experimental  
+<table>
+  <tr>
+    <td valign="top" width="50%">
 
-> ⚠️ This repository is intended as a **proof-of-concept** and may contain incomplete or evolving components.
+### 🪟 Windows Users (summary)
 
----
-
-## 🚀 How to Run the Demo
-
-### Requirements
-
-- **Python version:** **Python 3.10.12**
-
----
-
-## 🪟 Windows Users
-
-### Step 1: Install Python 3.10.12
-
-- Download **Python 3.10.12** from the official Python for Windows website
-- Select the appropriate installer (64-bit recommended)
-- Ensure **“Add python.exe to PATH”** is checked
-
----
-
-### Step 2: Create a Virtual Environment
+**Install Python 3.10.12** and create a virtual environment:
 
 ```bash
-cd C:\Users\YourUsername\Desktop\MyProject
+cd C:\\Users\\YourUsername\\Desktop\\MyProject
 py -3.10 -m venv venv_3_10_12
-```
-
----
-
-### Step 3: Activate the Virtual Environment
-
-```bash
-venv_3_10_12\Scripts\activate
-```
-
----
-
-### Step 4: Install Dependencies
-
-```bash
+venv_3_10_12\\Scripts\\activate
 pip install openai faiss-cpu jsonschema pandas tqdm scipdf textacy
-```
-
----
-
-### Step 5: Install Jupyter & Register Kernel
-
-```bash
 pip install jupyter ipykernel
 python -m ipykernel install --user --name=venv_3_10_12 --display-name="Python (venv_3_10_12)"
-```
-
----
-
-### Step 6: Launch Jupyter Notebook
-
-```bash
 jupyter notebook
 ```
 
----
+- Use `deactivate` to leave the venv.
 
-### Step 7: Deactivate the Environment
+    </td>
+    <td valign="top" width="50%">
+
+### 🐧 Ubuntu / Linux Users (summary)
+
+**Install Docker & run GROBID** (example):
 
 ```bash
-deactivate
-```
-
----
-
-## 🐧 Ubuntu / Linux Users
-
-> ⚠️ Setup instructions are currently **incomplete**.
-
----
-
-## 📎 Notes
-
-- Demo / proof-of-concept repository
-- Not production-ready
-
----
-
-## 🐳 Running GROBID (Docker – Windows)
-
-To run **GROBID 0.6.2** on **Windows**, using **Docker Desktop** is the most reliable approach, as it provides the required Linux-native environment.
-
----
-
-### Step 1: Install Docker Desktop on Windows
-
-- Download and run **Docker Desktop Installer.exe**
-- During setup, select **“Use WSL 2 instead of Hyper-V”**
-- Restart if prompted and launch Docker Desktop
-
----
-
-### Step 2: Pull and Run GROBID 0.6.2
-
-```powershell
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker $USER
 docker run -t --rm --init -p 8070:8070 -p 8071:8071 grobid/grobid:0.6.2
 ```
 
-**Command breakdown:**
+- If needed, use `wsl hostname -I` on Windows to get WSL IP for `localhost` replacement.
 
-- `-t` — Allocates a pseudo-terminal  
-- `--rm` — Removes the container after stopping  
-- `--init` — Handles system signals correctly  
-- `-p 8070:8070` — Main service port  
-- `-p 8071:8071` — Admin / health-check port  
+    </td>
+  </tr>
+</table>
 
 ---
 
-### Step 3: Access the Service
+## Option 2 — Side-by-side divs (may be blocked by some renderers)
 
-- **Main Interface:** http://localhost:8070  
-- **Health Check:** http://localhost:8071  
+<div style="display:flex; gap:2rem; align-items:flex-start;">
+  <div style="flex:1; min-width:280px;">
+  ### 🪟 Windows Users
+  - Steps: install python, create venv, activate, install deps, run jupyter.
+  </div>
+  <div style="flex:1; min-width:280px;">
+  ### 🐧 Ubuntu / Linux Users
+  - Steps: install docker, (optional) add user to docker group, run grobid container.
+  </div>
+</div>
 
 ---
 
-### 🪟 Windows-Specific Tip
+### Which option to use?
+- Use **Option 1 (HTML table)** for the best cross-viewer compatibility (works on GitHub web UI and many other renderers).
+- Use **Option 2** only if you want a more responsive layout and are OK with slight rendering differences.
 
-If `localhost` does not work due to WSL networking:
+---
 
-```powershell
-wsl hostname -I
-```
+## Final notes
 
-Use the returned IP address instead of `localhost`.
+You can copy the relevant Windows / Ubuntu sections from the main README into either column layout.
