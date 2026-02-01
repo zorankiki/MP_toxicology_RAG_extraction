@@ -28,31 +28,16 @@
 
 - Download **Python 3.10.12** from the official Python for Windows website
 - Select the appropriate installer (64-bit recommended)
-
-**Important installation options:**
-- ✅ Check **“Add python.exe to PATH”**
-- Click **“Install Now”**
-- Wait until installation completes
+- Ensure **“Add python.exe to PATH”** is checked
 
 ---
 
 ### Step 2: Create a Virtual Environment
 
-1. Open **Command Prompt (CMD)** or **PowerShell**
-2. Navigate to your project directory:
-   ```bash
-   cd C:\Users\YourUsername\Desktop\MyProject
-   ```
-
-3. (Optional) Verify available Python versions:
-   ```bash
-   py -0
-   ```
-
-4. Create the virtual environment:
-   ```bash
-   py -3.10 -m venv venv_3_10_12
-   ```
+```bash
+cd C:\Users\YourUsername\Desktop\MyProject
+py -3.10 -m venv venv_3_10_12
+```
 
 ---
 
@@ -61,14 +46,6 @@
 ```bash
 venv_3_10_12\Scripts\activate
 ```
-
-**Verification:**
-- Your terminal prompt should now show:
-  ```
-  (venv_3_10_12)
-  ```
-
-This confirms the environment is active and isolated.
 
 ---
 
@@ -82,15 +59,10 @@ pip install openai faiss-cpu jsonschema pandas tqdm scipdf textacy
 
 ### Step 5: Install Jupyter & Register Kernel
 
-1. Install Jupyter and ipykernel:
-   ```bash
-   pip install jupyter ipykernel
-   ```
-
-2. Register the environment as a Jupyter kernel:
-   ```bash
-   python -m ipykernel install --user --name=venv_3_10_12 --display-name="Python (venv_3_10_12)"
-   ```
+```bash
+pip install jupyter ipykernel
+python -m ipykernel install --user --name=venv_3_10_12 --display-name="Python (venv_3_10_12)"
+```
 
 ---
 
@@ -100,26 +72,9 @@ pip install openai faiss-cpu jsonschema pandas tqdm scipdf textacy
 jupyter notebook
 ```
 
-**Inside Jupyter:**
-- Create or open a notebook
-- Navigate to **Kernel → Change kernel**
-- Select **Python (venv_3_10_12)**
-
 ---
 
-### Step 7: Verify Kernel Registration (Optional)
-
-```bash
-jupyter kernelspec list
-```
-
-Your new kernel should appear in the list.
-
----
-
-### Step 8: Deactivate the Environment
-
-When finished:
+### Step 7: Deactivate the Environment
 
 ```bash
 deactivate
@@ -135,12 +90,54 @@ deactivate
 
 ## 📎 Notes
 
-- This repository is **not production-ready**
-- Intended for **experimentation and demos**
-- Dependencies and workflows may change
+- Demo / proof-of-concept repository
+- Not production-ready
 
 ---
 
-## 📄 License
+## 🐳 Running GROBID (Docker – Windows)
 
-*(Not specified)*
+To run **GROBID 0.6.2** on **Windows**, using **Docker Desktop** is the most reliable approach, as it provides the required Linux-native environment.
+
+---
+
+### Step 1: Install Docker Desktop on Windows
+
+- Download and run **Docker Desktop Installer.exe**
+- During setup, select **“Use WSL 2 instead of Hyper-V”**
+- Restart if prompted and launch Docker Desktop
+
+---
+
+### Step 2: Pull and Run GROBID 0.6.2
+
+```powershell
+docker run -t --rm --init -p 8070:8070 -p 8071:8071 grobid/grobid:0.6.2
+```
+
+**Command breakdown:**
+
+- `-t` — Allocates a pseudo-terminal  
+- `--rm` — Removes the container after stopping  
+- `--init` — Handles system signals correctly  
+- `-p 8070:8070` — Main service port  
+- `-p 8071:8071` — Admin / health-check port  
+
+---
+
+### Step 3: Access the Service
+
+- **Main Interface:** http://localhost:8070  
+- **Health Check:** http://localhost:8071  
+
+---
+
+### 🪟 Windows-Specific Tip
+
+If `localhost` does not work due to WSL networking:
+
+```powershell
+wsl hostname -I
+```
+
+Use the returned IP address instead of `localhost`.
