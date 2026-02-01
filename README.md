@@ -11,7 +11,7 @@
 - **Status:** Demo / Experimental
 
 [![Run on Binder](https://mybinder.org/badge_logo.svg)](
-https://mybinder.org/v2/gh/Yzorankiki/MP_toxicology_RAG_extraction/blob/dev/demo_rag_extraction_MPs.ipynb
+https://mybinder.org/v2/gh/zorankiki/MP_toxicology_RAG_extraction/blob/dev/demo_rag_extraction_MPs.ipynb
 )
 
 > ⚠️ This repository is intended as a **proof-of-concept** and may contain incomplete or evolving components.
